@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const vueSchema = new mongoose.Schema({
     nombreVue:{
-        type: int
+        type: Number
     },
     id_user:{
         type: mongoose.Schema.Types.ObjectId,

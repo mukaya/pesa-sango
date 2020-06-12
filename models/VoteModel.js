@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const voteSchema = new mongoose.Schema({
     nombreVote:{
-        type: int
+        type: Number
     },
     id_user:{
         type: mongoose.Schema.Types.ObjectId,
