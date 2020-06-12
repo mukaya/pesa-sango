@@ -15,6 +15,7 @@ server.use(express.urlencoded({extended: false}))
 server.use(express.json())
 
 server.use(require("./routes/UserRoute"))
+server.use(require("./routes/CommentaireRoute"));
 
 server.listen(PORT,()=>{
     console.log(`le serveur est lancé sur le port ${PORT}`)
