@@ -18,7 +18,7 @@ const plainteSchema = new mongoose.Schema({
     },
     id_categorie:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Categories"
+        ref: "CategoriePlaintes"
     },
     id_commune:{
         type: mongoose.Schema.Types.ObjectId,
