@@ -8,7 +8,7 @@ const plainteSchema = new mongoose.Schema({
         type:String
     },
     date_publication:{
-        type:Date
+        type:Date,default:Date.now
     },
     image:{
         type:String
