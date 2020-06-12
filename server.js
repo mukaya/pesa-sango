@@ -15,6 +15,7 @@ server.use(express.urlencoded({extended: false}))
 server.use(express.json())
 
 server.use(require("./routes/UserRoute"))
+server.use(require("./routes/PlainteRoute"))
 server.use(require("./routes/CommentaireRoute"));
 
 server.listen(PORT,()=>{

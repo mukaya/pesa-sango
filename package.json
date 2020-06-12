@@ -1,7 +1,6 @@
 {
   "name": "pesa-sango",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -11,6 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  },
+  "main": "keys.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesynyembo/pesa-sango.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thesynyembo/pesa-sango/issues"
+  },
+  "homepage": "https://github.com/thesynyembo/pesa-sango#readme",
+  "description": ""
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4"
   }
