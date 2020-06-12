@@ -5,13 +5,13 @@ const Users = require("../models/UserModel")
 class UserController {
     static createUser(){
         return async (request, response, next)=>{
-            const { nom, email, username, password, id_role} = request.body
-            if(!nom || !email || !username || !password || !id_role){
+            const { username,telephone, email,password, id_role} = request.body
+            if(!username || !telephone || !email || !password || !id_role){
                 return response.status(422).json({
                     error: "Veuillez saisir tout les champs"
                 })
             }
-            const user = new Users({nom,email,username,password, id_role})
+            const user = new Users({username,telephone, email,password, id_role})
             await user.save()
             .then((doc)=>{
                 if(doc){
