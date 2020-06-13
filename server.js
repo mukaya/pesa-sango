@@ -1,6 +1,6 @@
 const express = require('express')
 const server = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const { MONGOURI } = require("./keys")
 const mongoose = require('mongoose')
 
@@ -17,6 +17,8 @@ server.use(express.json())
 server.use(require("./routes/UserRoute"))
 server.use(require("./routes/PlainteRoute"))
 server.use(require("./routes/CommentaireRoute"));
+server.use(require("./routes/CategorieRoute"));
+server.use(require("./routes/CommuneRoute"));
 
 server.listen(PORT,()=>{
     console.log(`le serveur est lancé sur le port ${PORT}`)
