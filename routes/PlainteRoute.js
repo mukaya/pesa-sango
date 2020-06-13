@@ -1,6 +1,6 @@
 const express = require('express')
 const Router = express.Router()
-const PlainteController = require ('../controllers/PlainteController')
+const PlainteController = require("../controllers/PlainteController")
 
 Router.post("/createplainte", PlainteController.createPlainte())
 Router.get("/plaintes", PlainteController.getPlainte())
