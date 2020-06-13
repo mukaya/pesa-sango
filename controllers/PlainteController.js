@@ -1,5 +1,5 @@
 const express = require('express')
-const Pleints = require("../models/PlainteModel")
+const Plaintes = require("../models/PlainteModel")
 
 class PleinteController{
 
