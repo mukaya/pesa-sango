@@ -28,6 +28,7 @@ class CommentaireController {
   static getCommentaire() {
     return async (request, response, next) => {
       Commentaires.find({id_plainte:request.params.id_plainte})
+        .populate("id_user","username email telephone")
         .exec()
         .then((commentaires) => {
           if (commentaires) {
