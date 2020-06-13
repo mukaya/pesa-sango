@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/thesynyembo/pesa-sango#readme",
   "description": "",
-    "mongoose": "^5.9.18",
-    "nodemon": "^2.0.4"
-  }
-
+  "mongoose": "^5.9.18",
+  "nodemon": "^2.0.4"
+}
