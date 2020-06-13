@@ -1,5 +1,6 @@
 const express = require('express')
 const server = express()
+const cors = require('cors')
 const PORT = process.env.PORT || 5000
 const { MONGOURI } = require("./keys")
 const mongoose = require('mongoose')
@@ -11,8 +12,10 @@ mongoose.connect(MONGOURI,{
     if(!error){console.log(`La connexion à la BDD a reussit`)
     }else{console.log(`La connexion à la BDD a échouer`)}
 })
-server.use(express.urlencoded({extended: false}))
+
+server.use(cors())
 server.use(express.json())
+server.use(express.urlencoded({extended: false}))
 
 server.use(require("./routes/UserRoute"))
 server.use(require("./routes/PlainteRoute"))

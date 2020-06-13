@@ -6,13 +6,13 @@ const { JWT_SECRET } = require('../keys')
 class UserController {
     static createUser(){
         return async (request, response, next)=>{
-            const { username,telephone, email,password, id_role} = request.body
-            if(!username || !telephone || !email || !password || !id_role){
+            const { username,telephone, email,password} = request.body
+            if(!username || !telephone || !email || !password){
                 return response.status(422).json({
                     error: "Veuillez saisir tout les champs"
                 })
             }
-            const user = new Users({username,telephone, email,password, id_role})
+            const user = new Users({username,telephone, email,password})
             await user.save()
             .then((doc)=>{
                 if(doc){
@@ -70,11 +70,11 @@ class UserController {
     }
     static login(){
       return async(request, response, next)=>{
-        const { nom, password } = request.body
-        if(!nom || !password){
+        const { username, password } = request.body
+        if(!username || !password){
             response.status(422).json({error: "please add nom or password"})
         }
-        await Users.findOne({nom: nom})
+        await Users.findOne({username: username})
         .then((savedUser)=>{
             if(!savedUser){
                 return response.status(422).json({error: "Invalid nom or password"})
@@ -85,8 +85,8 @@ class UserController {
                     return response.status(422).json({Error: "Invalid nom or password"})
                 }else{
                     const token = jwt.sign({_id: savedUser._id}, JWT_SECRET)
-                    const {_id, nom, email} = savedUser
-                    response.json({token, user: {_id, nom, email}})
+                    const {_id, telephone, email, username} = savedUser
+                    response.send({token, user: {_id, telephone, email, username}})
                 }
             })
             .catch((error)=>{
