@@ -20,6 +20,8 @@ server.use(express.urlencoded({extended: false}))
 server.use(require("./routes/UserRoute"))
 server.use(require("./routes/PlainteRoute"))
 server.use(require("./routes/CommentaireRoute"));
+server.use(require("./routes/CategorieRoute"));
+server.use(require("./routes/CommuneRoute"));
 
 server.listen(PORT,()=>{
     console.log(`le serveur est lancé sur le port ${PORT}`)
