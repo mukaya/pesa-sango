@@ -3,7 +3,11 @@ const Router = express.Router()
 const PlainteController = require ('../controllers/PlainteController')
 
 Router.post("/createplainte", PlainteController.createPlainte())
-
-Router.get("/allplaintes", PlainteController.getPlainte())
+Router.get("/plaintes", PlainteController.getPlainte())
+Router.get("/plainteDesc", PlainteController.getPlainteDesc())
+Router.get("/plainteAsc", PlainteController.getPlainteAsc())
+Router.get("/plainteCategorie", PlainteController.getPlainteCategorie())
+Router.get("/plainte/:id", PlainteController.getPlainteById())
+Router.get("/plainte/:categorie", PlainteController.getPlainteCategorie())
 
 module.exports = Router

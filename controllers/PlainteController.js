@@ -1,6 +1,4 @@
 const express = require('express')
-const Communes = require("../models/CommuneModel")
-const Categories = require("../models/CategoriePlainteModel")
 const Plaintes = require("../models/PlainteModel")
 
 class PlainteController {
@@ -47,52 +45,83 @@ class PlainteController {
            })
         }
     }
-    static createCategorie(){
+    static getPlainteDesc(){
         return async (request, response, next)=>{
-            const { label } = request.body
-            if(!label){
-                return response.status(422).json({
-                    error: "Veuillez saisir tout les champs"
-                })
-            }
-            const categorie = new Categories({label})            
-            await categorie.save()
-            .then((doc)=>{
-                if(doc){
-                    response.status(201).json({
-                        message: "Created categorie",
-                        categorie: doc
+            Plaintes.find()
+           .populate('id_categorie', "label")
+           .populate('id_commune', "label").sort({date_publication:-1})
+           .exec()
+           .then((plaintes)=>{
+               if(plaintes){
+                    response.status(200).json({
+                        taille: plaintes.length,
+                        plaintes: plaintes
                     })
-                }
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
+               }
+           })
+           .catch((error)=>{
+               console.log(error)
+           })
         }
     }
-    static createCommune(){
+    static getPlainteAsc(){
         return async (request, response, next)=>{
-            const { label } = request.body
-            if(!label){
-                return response.status(422).json({
-                    error: "Veuillez saisir tout les champs"
-                })
-            }
-            const commune = new Communes({label})            
-            await commune.save()
-            .then((doc)=>{
-                if(doc){
-                    response.status(201).json({
-                        message: "Created commune",
-                        commune: doc
+            Plaintes.find()
+           .populate('id_categorie', "label")
+           .populate('id_commune', "label").sort({date_publication:1})
+           .exec()
+           .then((plaintes)=>{
+               if(plaintes){
+                    response.status(200).json({
+                        taille: plaintes.length,
+                        plaintes: plaintes
                     })
-                }
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
+               }
+           })
+           .catch((error)=>{
+               console.log(error)
+           })
         }
     }
+    static getPlainteCategorie(){
+        return async (request, response, next)=>{
+            Plaintes.find({id_categorie:request.params.label})
+            .populate('id_categorie', "label")
+            .populate('id_commune', "label")
+           .exec()
+           .then((plaintes)=>{
+               if(plaintes){
+                    response.status(200).json({
+                        taille: plaintes.length,
+                        plaintes: plaintes
+                    })
+               }
+           })
+           .catch((error)=>{
+               console.log(error)
+           })
+        }
+    } 
+    static getPlainteById(){
+        return async (request, response, next)=>{
+            Plaintes.findOne({ _id: request.params.id })
+            .populate('id_categorie', "label")
+            .populate('id_commune', "label")
+           .exec()
+           .then((plainte)=>{
+               if(plainte){
+                    response.status(200).json({
+                        taille: plainte.length,
+                        plainte: plainte
+                    })
+               }
+           })
+           .catch((error)=>{
+               console.log(error)
+           })
+        }
+    } 
+
 }
 
 
