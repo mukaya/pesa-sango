@@ -1,0 +1,14 @@
+uv init
+uv venv --python 3.12
+source .venv/bin/activate
+rm -rf .venv
+uv pip list
+uv venv
+uv add transformers torch fastapi
+uv add pandas numpy matplotlib scikit-learn
+uv add mlflow docker fastapi
+python --version
+uv sync
+uv remove pandas
+which python
+deactivate
