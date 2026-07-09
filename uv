@@ -13,3 +13,4 @@ uv remove pandas
 which python
 deactivate
 uv run main.py
+uv pip install -r requirements.txt
