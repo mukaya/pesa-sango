@@ -14,3 +14,4 @@ which python
 deactivate
 uv run main.py
 uv pip install -r requirements.txt
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu132
